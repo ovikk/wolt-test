@@ -4,7 +4,7 @@ import {API_ROOT, INITIAL_FETCH} from '../utils/constants.js'
 export function initialFetch() {
   return (dispatch) => {
     const request = fetch(
-        'http://127.0.0.1:8080/shifts', {
+        `${API_ROOT}/shifts`, {
           method: 'GET',
         }
       );

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, StatusBar } from "react-native";
 
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";

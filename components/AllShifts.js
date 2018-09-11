@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from "react-native";
 
 export default class AllShifts extends React.Component {
     render() {
+        console.log('all shifts')
         return (
             <View style={styles.container}>
                 <Text>All Shifts</Text>

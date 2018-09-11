@@ -1,36 +1,28 @@
 import React from "react";
 import { StyleSheet, Text, View, StatusBar } from "react-native";
 
-import TitleConainer from './common/TitleContainer';
-
-
-
-
-export default class MyShifts extends React.Component {
+export default class TitleContainer extends React.Component {
     render() {
-        console.log('my shifts')
         return (
-            <View style={styles.container}>
-                <TitleConainer title='today' />
-
+            <View style={styles.titleContainer}>
+                <Text style={styles.titleText}>{this.props.title}</Text>
+                <Text style={styles.additionalText}>{this.props.additionalText}</Text>
             </View>
-        );
+        )
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
     titleContainer: {
         width: '100%',
         height: 50,
         backgroundColor: '#F1F4F8',
         paddingLeft: 20,
-        marginBottom: 30,
         flexDirection: 'row',
         alignItems: 'center',
+        
+        borderBottomWidth: 1,
+        borderColor: '#CBD2E1'
     },
 
     titleText: {
