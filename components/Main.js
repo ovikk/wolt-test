@@ -1,17 +1,18 @@
 import React from "react";
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 
-import { initialFetch } from "../actions";
+import { fetchShifts } from "../actions";
 import { connect } from "react-redux";
 
 import Routes from './routing';
 
 class Main extends React.Component {
     componentWillMount() {
-        this.props.initialFetch();
+        this.props.fetchShifts();
     }
 
     render() {
+        console.log(this.props.shifts)
         if (this.props.shifts.init_loading) {
             return (
                 <View style={styles.container}>
@@ -33,8 +34,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    initialFetch: () => {
-        dispatch(initialFetch());
+    fetchShifts: () => {
+        dispatch(fetchShifts());
     }
 });
 

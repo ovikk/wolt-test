@@ -2,15 +2,17 @@ import React from "react";
 import { StyleSheet, View, StatusBar, ScrollView } from "react-native";
 import styled from "styled-components";
 
-import { initialFetch } from "../actions";
+import { fetchShifts } from "../actions";
 import { connect } from "react-redux";
 
 import TitleConainer from "./common/TitleContainer";
 import ShiftContainer from './common/ShiftContainer';
 
+import moment from 'moment';
+
 class MyShifts extends React.Component {
     render() {
-        console.log(this.props.shifts)
+        // this.props.shifts.shifts.map(o => console.log(moment(o.startTime).format('MMMM Do')))
         return (
             <ScrollView style={styles.container}>
                 <StatusBar hidden={true} />
@@ -28,8 +30,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    initialFetch: () => {
-        dispatch(initialFetch());
+    fetchShifts: () => {
+        dispatch(fetchShifts());
     }
 });
 

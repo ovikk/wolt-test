@@ -8,8 +8,8 @@ import MyShifts from "./MyShifts";
 
 export default createBottomTabNavigator(
     {
-        "My shifts": MyShifts,
-        "Available shifts": AllShifts
+        "Available shifts": AllShifts,
+        "My shifts": MyShifts
     },
 
     {
@@ -20,7 +20,7 @@ export default createBottomTabNavigator(
                 fontSize: 18,
                 textAlign: "center",
                 marginBottom: 10,
-                fontWeight: 'bold',
+                fontWeight: "bold"
             },
             style: {
                 backgroundColor: "#F7F8FB"
