@@ -1,48 +1,46 @@
 import React from "react";
-import { StyleSheet, Text, View, StatusBar } from "react-native";
+import { StyleSheet, View, StatusBar, ScrollView } from "react-native";
+import styled from "styled-components";
 
-import TitleConainer from './common/TitleContainer';
+import { initialFetch } from "../actions";
+import { connect } from "react-redux";
 
+import TitleConainer from "./common/TitleContainer";
+import ShiftContainer from './common/ShiftContainer';
 
-
-
-export default class MyShifts extends React.Component {
+class MyShifts extends React.Component {
     render() {
-        console.log('my shifts')
+        console.log(this.props.shifts)
         return (
-            <View style={styles.container}>
-                <TitleConainer title='today' />
-
-            </View>
+            <ScrollView style={styles.container}>
+                <StatusBar hidden={true} />
+                <TitleConainer title="Today" additionalText="2 shifts, 4 h" />
+                <ShiftContainer time="12:00 - 14:00" statusText="Booked" statusColor="blue" buttonText="Book" buttonColor="red" /> 
+            </ScrollView>
         );
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        shifts: state.shifts
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    initialFetch: () => {
+        dispatch(initialFetch());
+    }
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MyShifts);
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#fff",
-    },
-    titleContainer: {
-        width: '100%',
-        height: 50,
-        backgroundColor: '#F1F4F8',
-        paddingLeft: 20,
-        marginBottom: 30,
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-
-    titleText: {
-        color: '#4F6C92',
-        fontSize: 18,
-        fontWeight: 'bold',
-
-    },
-    
-    additionalText: {
-        marginLeft: 20,
-        fontSize: 18,
-        color: '#A4B8D3'
-    },
+        backgroundColor: "#fff"
+    }
 });
