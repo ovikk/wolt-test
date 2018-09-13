@@ -3,6 +3,18 @@ import { StyleSheet, View, StatusBar, ScrollView, ActivityIndicator } from "reac
 import styled from "styled-components";
 
 export default class ShiftContainer extends React.Component {
+
+    constructor(props) {
+        super(props)
+        
+        this.onButtonPress = this.onButtonPress.bind(this)
+    }
+
+    onButtonPress() {
+        if (this.props.buttonColor === 'red') this.props.onCancel()
+        else if (this.props.buttonColor === 'green') this.props.onBook()
+    }
+
     render() {
         return (
             <Wrapper>
@@ -17,7 +29,7 @@ export default class ShiftContainer extends React.Component {
                     </StatusContainer>
                 )}
 
-                <ShiftButton onPress={() => console.log("click")} color={this.props.buttonColor}>
+                <ShiftButton onPress={this.onButtonPress} color={this.props.buttonColor} disabled={this.props.buttonColor === 'gray'}>
                     {this.props.loading ? <ActivityIndicator color={getColor(this.props.buttonColor)} size="small" /> : <ButtonText color={this.props.buttonColor}>{this.props.buttonText}</ButtonText>}
                 </ShiftButton>
             </Wrapper>
@@ -27,7 +39,7 @@ export default class ShiftContainer extends React.Component {
 
 const Wrapper = styled.View`
     width: 100%;
-    border-bottom-width: 0.5;
+    border-bottom-width: 1;
     border-color: #cbd2e1;
     height: 70;
     background-color: white;
@@ -52,7 +64,7 @@ const StatusContainer = styled.View`
     flex-direction: row;
     justify-content: flex-end;
     flex: 1;
-    margin-right: 20;
+    margin-right: 15;
 `;
 
 const getColor = props => {
@@ -66,13 +78,16 @@ const getColor = props => {
         case "blue":
             return "#4F6C92";
             break;
+        case "gray":
+            return "gray";
+            break;
         default:
             return "gray";
     }
 };
 
 const StatusText = styled.Text`
-    font-size: 18;
+    font-size: 16;
     font-weight: bold;
     color: ${props => getColor(props.color)};
 `;

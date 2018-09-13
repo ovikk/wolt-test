@@ -8,11 +8,20 @@ import Routes from './routing';
 
 class Main extends React.Component {
     componentWillMount() {
-        this.props.fetchShifts();
     }
 
+    componentDidMount() {
+        console.log('MOUNT')
+        this.props.fetchShifts();
+
+        this.interval = setInterval(() => this.setState({ time: Date.now() }), 2000);
+      }
+      componentWillUnmount() {
+          console.log('UNMOUNT')
+        clearInterval(this.interval);
+      }
+
     render() {
-        console.log(this.props.shifts)
         if (this.props.shifts.init_loading) {
             return (
                 <View style={styles.container}>
