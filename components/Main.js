@@ -4,35 +4,23 @@ import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { fetchShifts } from "../actions";
 import { connect } from "react-redux";
 
-import Routes from './routing';
+import Routes from "./routing";
 
 class Main extends React.Component {
     componentWillMount() {
-    }
-
-    componentDidMount() {
-        console.log('MOUNT')
         this.props.fetchShifts();
-
-        this.interval = setInterval(() => this.setState({ time: Date.now() }), 2000);
-      }
-      componentWillUnmount() {
-          console.log('UNMOUNT')
-        clearInterval(this.interval);
-      }
+    }
 
     render() {
         if (this.props.shifts.init_loading) {
             return (
                 <View style={styles.container}>
-                    <ActivityIndicator size="large" color="#16A64D"/>
+                    <ActivityIndicator size="large" color="#16A64D" />
                 </View>
             );
         }
 
-        return (
-            <Routes />
-        );
+        return <Routes />;
     }
 }
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { StyleSheet, View, StatusBar, ScrollView, RefreshControl } from "react-native";
-import styled from "styled-components";
+import { StyleSheet, StatusBar, ScrollView, RefreshControl } from "react-native";
 
 import { fetchShifts, cancelShift } from "../actions";
 import { connect } from "react-redux";
@@ -62,6 +61,7 @@ class MyShifts extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={this.props.shifts.loading} onRefresh={this.props.fetchShifts} />} >
+                <StatusBar hidden={true} />
                 {this.renderAll()}
             </ScrollView>
         );

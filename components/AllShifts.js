@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, ScrollView, RefreshControl } from "react-native";
+import { StyleSheet, ScrollView, RefreshControl, StatusBar } from "react-native";
 import styled from "styled-components";
 
 import { fetchShifts, bookShift, cancelShift } from "../actions";
@@ -92,6 +92,7 @@ class AllShifts extends React.Component {
     render() {
         return (
             <ScrollView style={styles.container} refreshControl={<RefreshControl refreshing={this.props.shifts.loading} onRefresh={this.props.fetchShifts} />}>
+                <StatusBar hidden={true} />
                 <TopCityBarContainer>
                     <CityText onPress={() => this.changeActiveTab("Helsinki")} active={this.state.activeTab === "Helsinki"}>
                         Helsinki ({this.state.helsinkiCount})

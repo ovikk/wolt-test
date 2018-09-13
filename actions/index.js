@@ -101,7 +101,7 @@ export function cancelShift(shift) {
 
         return request.then(
             response => {
-                if (responce.ok) {
+                if (response.ok) {
                     dispatch({ type: CANCELED_SHIFT, payload: { shift } });
                     dispatch({ type: PARSE_OVERLAPPING });
                 } else {

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, StatusBar, ScrollView, ActivityIndicator } from "react-native";
+import { View, ActivityIndicator } from "react-native";
 import styled from "styled-components";
 
 export default class ShiftContainer extends React.Component {
